@@ -1,0 +1,306 @@
+/* ── filter bar ── */
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: flex-end;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.control {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-4);
+  background: var(--input-bg);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.12s ease;
+}
+
+.control:focus {
+  border-color: var(--purple-3);
+}
+
+.fAsset {
+  flex: 1;
+  min-width: 130px;
+}
+.fNetwork {
+  flex: 1;
+  min-width: 140px;
+}
+.fDate {
+  flex: 1;
+  min-width: 130px;
+}
+.fStatus {
+  flex: 1;
+  min-width: 130px;
+}
+.fMerchant {
+  flex: 1.2;
+  min-width: 150px;
+}
+
+.clear {
+  flex: none;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--purple-tint);
+  color: var(--purple);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.clear:hover {
+  background: #e8e4ff;
+}
+
+/* ── table card ── */
+.tableHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.cardHeading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.count {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted-2);
+}
+
+.empty {
+  text-align: center;
+  padding: 50px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--faint);
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.rowGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 0.7fr 0.95fr 0.85fr 1.05fr 0.8fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.headRow {
+  padding: 0 6px 10px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.headRow span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--faint);
+}
+
+.bodyRow {
+  padding: 12px 6px;
+  border-bottom: 1px solid var(--hairline-2);
+}
+
+.bodyRow:last-child {
+  border-bottom: none;
+}
+
+.right {
+  text-align: right;
+  justify-self: end;
+}
+
+.cId {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.idText {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.idDate {
+  font-size: 11px;
+  color: var(--faint);
+}
+
+.cMerchant {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.mHandleText {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mIdText {
+  font-size: 11px;
+  color: var(--faint-2);
+}
+
+.cAsset {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-4);
+}
+
+.cNetwork {
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.amountCell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  text-align: right;
+}
+
+.amtUsd {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--text);
+}
+
+.amtCrypto {
+  font-size: 11px;
+  color: var(--faint);
+}
+
+.cTx {
+  min-width: 0;
+}
+
+.tx {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--purple);
+  white-space: nowrap;
+}
+
+.cStatus {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── mobile cards ── */
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mCard {
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mId {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.mMerchant {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mHandle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.mMerchantId {
+  font-size: 11px;
+  color: var(--faint-2);
+}
+
+.mBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mAmount {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--text);
+}
+
+.mMeta {
+  font-size: 12.5px;
+  color: var(--text-2);
+  text-align: right;
+}
+
+.mPayout {
+  font-size: 11px;
+  color: var(--muted-2);
+}
+
+.mTx {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--purple);
+}

@@ -1,0 +1,16 @@
+# Keep the build context small AND correct. node_modules must NOT be copied
+# from the host: the image installs its own Linux deps in `RUN npm i`, and
+# copying host (macOS/Windows) binaries over them breaks esbuild/vite during
+# `npm run build`.
+node_modules
+dist
+dist-ssr
+.git
+.gitignore
+*.log
+.DS_Store
+.vscode
+.idea
+
+# NOTE: .env / .env.production are intentionally NOT ignored — `vite build`
+# reads .env.production to bake VITE_API_BASE into the bundle.

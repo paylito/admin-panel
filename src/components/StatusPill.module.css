@@ -1,0 +1,26 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 11px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-transform: lowercase;
+}
+
+.completed {
+  background: var(--ok-bg);
+  color: var(--ok-fg);
+}
+
+.pending {
+  background: var(--warn-bg);
+  color: var(--warn-fg);
+}
+
+.failed {
+  background: var(--err-bg);
+  color: var(--err-fg);
+}

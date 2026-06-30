@@ -1,0 +1,146 @@
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.cardHeading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.count {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted-2);
+}
+
+.empty {
+  text-align: center;
+  padding: 50px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--faint);
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.rowGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 0.9fr 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.headRow {
+  padding: 0 6px 12px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.headRow span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--faint);
+}
+
+.bodyRow {
+  padding: 14px 6px;
+  border-bottom: 1px solid var(--hairline-2);
+}
+
+.bodyRow:last-child {
+  border-bottom: none;
+}
+
+.right {
+  text-align: right;
+  justify-self: end;
+}
+
+.userCell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.user {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--purple);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.figure {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.figureGreen {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--green);
+}
+
+.telegram {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+/* ── mobile cards ── */
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mCard {
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mHeadRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mNameWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.mUser {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--purple);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mTelegram {
+  font-size: 12px;
+  color: var(--muted);
+}

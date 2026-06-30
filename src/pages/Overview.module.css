@@ -1,0 +1,513 @@
+/* ── hero bento ── */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.volumeCard {
+  position: relative;
+  flex: 1.7;
+  min-width: 300px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 22px;
+  padding: 26px 28px;
+  background: linear-gradient(135deg, #6449ff 0%, #7b5cff 55%, #9c84ff 100%);
+  color: #fff;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.volumeCentered {
+  justify-content: center;
+}
+
+.volumeCentered .volumeBody {
+  gap: 10px;
+}
+
+.ring {
+  position: absolute;
+  right: -50px;
+  bottom: -110px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 38px solid rgba(255, 255, 255, 0.1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.volumeBody {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.volumeLabel {
+  font-size: 13.5px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.volumeValueRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.volumeValue {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 50px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.volumePill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 4px 11px;
+}
+
+.volumeCaption {
+  font-size: 12.5px;
+  opacity: 0.8;
+}
+
+.sparkWrap {
+  position: relative;
+  z-index: 1;
+  margin: 18px -28px -26px;
+}
+
+/* ── side stat cards ── */
+.sideCol {
+  flex: 1;
+  min-width: 230px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sideCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sideTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  flex: none;
+}
+
+.sideLabel {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.sideValue {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--text);
+}
+
+.deltaPill {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 4px 10px;
+}
+
+.deltaPill.green {
+  background: var(--ok-bg);
+  color: var(--ok-fg);
+}
+
+.deltaPill.amber {
+  background: var(--warn-bg);
+  color: var(--warn-fg);
+}
+
+/* ── metric tiles ── */
+.tilesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tilesHead {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.toggle {
+  background: none;
+  border: none;
+  padding: 2px 4px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--purple);
+}
+
+.toggle:hover {
+  text-decoration: underline;
+}
+
+.tilesRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.tile {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tileLabel {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.tileValue {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 25px;
+  line-height: 1;
+  color: var(--text);
+}
+
+.tileSub {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tileSub.green {
+  color: var(--green);
+}
+
+.tileSub.purple {
+  color: var(--purple);
+}
+
+/* ── methods + top merchants ── */
+.splitRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.panel {
+  flex: 1;
+  min-width: 300px;
+}
+
+.cardHeading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.cardEmpty {
+  margin: 22px 0 8px;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--faint);
+}
+
+.methodList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.methodRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.methodTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.methodSwatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex: none;
+}
+
+.methodAsset {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-4);
+  margin-right: auto;
+}
+
+.methodAmount {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted-2);
+}
+
+.methodPct {
+  width: 38px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.track {
+  height: 9px;
+  border-radius: 6px;
+  background: var(--hairline);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+}
+
+.topList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rank {
+  width: 14px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--rank);
+  flex: none;
+}
+
+.topInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  margin-right: auto;
+}
+
+.topName {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.topSub {
+  font-size: 11.5px;
+  color: var(--sub-muted);
+}
+
+.topValue {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* ── recent payments ── */
+.recentHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.viewAll {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--purple);
+}
+
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.rowGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.1fr 0.8fr 1fr 0.9fr 0.85fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.headRow {
+  padding: 0 6px 10px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.headRow span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--faint);
+}
+
+.bodyRow {
+  padding: 12px 6px;
+  border-bottom: 1px solid var(--hairline-2);
+}
+
+.bodyRow:last-child {
+  border-bottom: none;
+}
+
+.right {
+  text-align: right;
+  justify-self: end;
+}
+
+.cId {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.cMerchant {
+  font-size: 13px;
+  color: var(--text-2);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cAsset {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-4);
+}
+
+.cNetwork {
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.cAmount {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--text);
+}
+
+/* ── mobile recent payment cards ── */
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.mCard {
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mId {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.mMerchant {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.mBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mAmount {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--text);
+}
+
+.mMeta {
+  font-size: 12.5px;
+  color: var(--text-2);
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .volumeValue {
+    font-size: 38px;
+  }
+
+  .sparkWrap {
+    margin: 14px -28px -26px;
+  }
+}

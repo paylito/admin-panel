@@ -1,0 +1,139 @@
+.screen {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--page-bg);
+  overflow: hidden;
+}
+
+.blobs {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blobCyan,
+.blobPurple {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(90px);
+}
+
+.blobCyan {
+  top: -150px;
+  right: -120px;
+  background: var(--cyan);
+  opacity: 0.1;
+}
+
+.blobPurple {
+  bottom: -150px;
+  left: -120px;
+  background: var(--purple);
+  opacity: 0.09;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  background: var(--purple);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1;
+  box-shadow: 0 14px 34px -16px rgba(100, 73, 255, 0.7);
+}
+
+.spinner {
+  margin-top: 26px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid var(--purple-tint);
+  border-top-color: var(--purple);
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  margin-top: 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.errorTitle {
+  margin-top: 22px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.errorMsg {
+  margin-top: 8px;
+  max-width: 360px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--muted-2);
+}
+
+.actions {
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+}
+
+.primary,
+.secondary {
+  padding: 11px 20px;
+  border-radius: 11px;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.primary {
+  border: none;
+  background: var(--purple);
+  color: #fff;
+}
+
+.primary:hover {
+  background: var(--purple-2);
+}
+
+.secondary {
+  border: 1px solid var(--input-border);
+  background: #fff;
+  color: var(--text-3);
+}
+
+.secondary:hover {
+  border-color: var(--card-border);
+}
