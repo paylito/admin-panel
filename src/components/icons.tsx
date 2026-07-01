@@ -49,6 +49,14 @@ export function DonateesIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function ExternalLinkIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <Icon {...props}>
+      <path d="M15 3h6v6 M21 3l-9 9 M18 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5" />
+    </Icon>
+  );
+}
+
 export function LogoutIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <Icon {...props}>

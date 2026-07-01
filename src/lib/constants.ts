@@ -42,6 +42,30 @@ export const NETWORK_OPTIONS = [
 ];
 export const STATUS_OPTIONS = ['any', 'completed', 'pending', 'failed'];
 
+/**
+ * Block-explorer transaction URL prefixes, keyed by the lowercase network name
+ * the API returns (e.g. "ethereum"). The payout tx hash is appended to the prefix.
+ */
+export const EXPLORER_TX_URL: Record<string, string> = {
+  ethereum: 'https://etherscan.io/tx/',
+  arbitrum: 'https://arbiscan.io/tx/',
+  optimism: 'https://optimistic.etherscan.io/tx/',
+  polygon: 'https://polygonscan.com/tx/',
+  bsc: 'https://bscscan.com/tx/',
+  tron: 'https://tronscan.org/#/transaction/',
+  bitcoin: 'https://mempool.space/tx/',
+  solana: 'https://solscan.io/tx/',
+};
+
+/** Explorer link for a payout tx, or null when the network has no known explorer. */
+export function explorerTxUrl(
+  network: string | null | undefined,
+  hash: string,
+): string | null {
+  const base = network ? EXPLORER_TX_URL[network.toLowerCase()] : undefined;
+  return base ? base + hash : null;
+}
+
 /** Avatar color for the item at `index` in a list. */
 export function avatarColor(index: number): string {
   return AVATAR_PALETTE[index % AVATAR_PALETTE.length];

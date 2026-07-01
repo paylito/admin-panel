@@ -15,3 +15,81 @@
   border-radius: 50%;
   flex: none;
 }
+
+/* ── click-to-copy value ── */
+.copyable {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  margin: 0 -6px;
+  padding: 2px 6px;
+  appearance: none;
+  border: none;
+  border-radius: 7px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  line-height: inherit;
+  white-space: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+
+.copyable:hover {
+  background: var(--purple-tint);
+}
+
+.copyable:active {
+  background: #e7e2ff;
+}
+
+/* Higher specificity than any passed value class so the confirm flash wins. */
+.copyable.copied,
+.copyable.copied:hover {
+  background: var(--ok-bg);
+  color: var(--ok-fg);
+}
+
+/* ── payout tx ── */
+.txWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.tx {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--purple);
+  white-space: nowrap;
+}
+
+.txLink {
+  display: inline-flex;
+  flex: none;
+  padding: 3px;
+  margin: -3px -1px;
+  border-radius: 6px;
+  color: var(--faint);
+  transition:
+    color 0.12s ease,
+    background 0.12s ease;
+}
+
+.txLink:hover {
+  color: var(--purple);
+  background: var(--purple-tint);
+}
+
+.txLinkIcon {
+  width: 14px;
+  height: 14px;
+}

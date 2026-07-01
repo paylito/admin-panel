@@ -55,6 +55,12 @@ export function pageSlice<T>(items: T[], page: number): T[] {
   return items.slice(p * PAGE_SIZE, (p + 1) * PAGE_SIZE);
 }
 
+/** Middle-truncate a long value like a tx hash: "0x3344…f5a2b1" (head + … + tail). */
+export function truncateMiddle(value: string, head = 6, tail = 6): string {
+  if (value.length <= head + tail + 1) return value;
+  return `${value.slice(0, head)}…${value.slice(-tail)}`;
+}
+
 /** "USDT · Tron" on one line (mobile), or a dash when not completed. */
 export function assetNetworkLabel(payment: Payment): string {
   return payment.status === 'completed' && payment.asset && payment.network

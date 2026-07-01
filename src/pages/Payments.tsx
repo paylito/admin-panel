@@ -4,7 +4,7 @@ import { Card } from '../components/Card';
 import { PageHeader } from '../components/PageHeader';
 import { Pagination } from '../components/Pagination';
 import { StatusPill } from '../components/StatusPill';
-import { AssetCell, Dash } from '../components/cells';
+import { AssetCell, Copyable, Dash, TxCell } from '../components/cells';
 import { assetNetworkLabel, pageSlice } from '../lib/format';
 import { useIsMobile } from '../lib/useMediaQuery';
 import { useData } from '../data/AppDataContext';
@@ -167,28 +167,35 @@ export function Payments() {
             {pageItems.map((p) => (
               <div key={p.id} className={styles.mCard}>
                 <div className={styles.mTop}>
-                  <span className={styles.mId}>{p.id}</span>
+                  <Copyable value={p.id}>
+                    <span className={styles.mId}>{p.id}</span>
+                  </Copyable>
                   <StatusPill status={p.status} />
                 </div>
                 <div className={styles.mMerchant}>
-                  <span className={styles.mHandle}>
-                    {p.merchantHandle ?? '—'}
-                  </span>
-                  <span className={styles.mMerchantId}>
-                    {p.merchantId ?? '—'}
-                  </span>
+                  {p.merchantHandle ? (
+                    <Copyable value={p.merchantHandle}>
+                      <span className={styles.mHandle}>{p.merchantHandle}</span>
+                    </Copyable>
+                  ) : (
+                    <span className={styles.mHandle}>—</span>
+                  )}
+                  {p.merchantId ? (
+                    <Copyable value={p.merchantId}>
+                      <span className={styles.mMerchantId}>{p.merchantId}</span>
+                    </Copyable>
+                  ) : (
+                    <span className={styles.mMerchantId}>—</span>
+                  )}
                 </div>
                 <div className={styles.mBottom}>
-                  <span className={styles.mAmount}>{p.usd}</span>
+                  <Copyable value={p.usd}>
+                    <span className={styles.mAmount}>{p.usd}</span>
+                  </Copyable>
                   <span className={styles.mMeta}>{assetNetworkLabel(p)}</span>
                 </div>
                 <div className={styles.mPayout}>
-                  payout{' '}
-                  {p.status === 'completed' && p.payoutTx ? (
-                    <span className={styles.mTx}>{p.payoutTx}</span>
-                  ) : (
-                    <Dash />
-                  )}
+                  payout <TxCell payment={p} />
                 </div>
               </div>
             ))}
@@ -207,33 +214,51 @@ export function Payments() {
             {pageItems.map((p) => (
               <div key={p.id} className={`${styles.rowGrid} ${styles.bodyRow}`}>
                 <span className={styles.cId}>
-                  <span className={styles.idText}>{p.id}</span>
-                  <span className={styles.idDate}>{p.date}</span>
+                  <Copyable value={p.id}>
+                    <span className={styles.idText}>{p.id}</span>
+                  </Copyable>
+                  <Copyable value={p.date}>
+                    <span className={styles.idDate}>{p.date}</span>
+                  </Copyable>
                 </span>
                 <span className={styles.cMerchant}>
-                  <span className={styles.mHandleText}>
-                    {p.merchantHandle ?? '—'}
-                  </span>
-                  <span className={styles.mIdText}>{p.merchantId ?? '—'}</span>
+                  {p.merchantHandle ? (
+                    <Copyable value={p.merchantHandle}>
+                      <span className={styles.mHandleText}>{p.merchantHandle}</span>
+                    </Copyable>
+                  ) : (
+                    <span className={styles.mHandleText}>—</span>
+                  )}
+                  {p.merchantId ? (
+                    <Copyable value={p.merchantId}>
+                      <span className={styles.mIdText}>{p.merchantId}</span>
+                    </Copyable>
+                  ) : (
+                    <span className={styles.mIdText}>—</span>
+                  )}
                 </span>
                 <span className={styles.cAsset}>
                   <AssetCell payment={p} />
                 </span>
                 <span className={styles.cNetwork}>
-                  {p.status === 'completed' && p.network ? p.network : <Dash />}
-                </span>
-                <span className={styles.amountCell}>
-                  <span className={styles.amtUsd}>{p.usd}</span>
-                  {p.status === 'completed' && p.crypto && (
-                    <span className={styles.amtCrypto}>{p.crypto}</span>
-                  )}
-                </span>
-                <span className={styles.cTx}>
-                  {p.status === 'completed' && p.payoutTx ? (
-                    <span className={styles.tx}>{p.payoutTx}</span>
+                  {p.status === 'completed' && p.network ? (
+                    <Copyable value={p.network}>{p.network}</Copyable>
                   ) : (
                     <Dash />
                   )}
+                </span>
+                <span className={styles.amountCell}>
+                  <Copyable value={p.usd}>
+                    <span className={styles.amtUsd}>{p.usd}</span>
+                  </Copyable>
+                  {p.status === 'completed' && p.crypto && (
+                    <Copyable value={p.crypto}>
+                      <span className={styles.amtCrypto}>{p.crypto}</span>
+                    </Copyable>
+                  )}
+                </span>
+                <span className={styles.cTx}>
+                  <TxCell payment={p} />
                 </span>
                 <span className={`${styles.right} ${styles.cStatus}`}>
                   <StatusPill status={p.status} />
