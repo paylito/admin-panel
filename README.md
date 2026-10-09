@@ -67,3 +67,30 @@ Gabarito (display/numbers) + Plus Jakarta Sans (body) via Google Fonts.
 - `/admin/overview` returns raw KPI numbers but **no trend series or growth
   deltas**, so the hero sparkline and the ▲% pills only render if the API later
   adds `volumeSeries` / `volumeDelta` (the components are wired for it).
+# Public dashboard
+
+Visitors see anonymous volume, registered-user counts, payment traces, filters,
+and server-side pagination without login. `/login` opens the admin login; valid
+admin sessions keep the merchant and donatee views. Logging out returns to
+public activity. Public pages only call `/public/overview` and `/public/payments`.
+
+The headline is gross transfer volume, counting the reference USD payment value
+for each observed payer, source, and confirmed destination leg. Completed swaps
+count input and output separately even within a single transaction; same-asset
+delivery sharing its source transaction counts once.
+Completed payment volume counts each payment once. The calculation is visible
+in the dashboard. Registered-user counts include waitlist accounts, not unique
+payers. Personal details are excluded by the API, not merely hidden by CSS.
+Blockchain explorers expose on-chain addresses when visitors follow TX links.
+
+Set `VITE_API_BASE` in production as before. The Vite development proxy forwards
+`/public` and `/admin` to `VITE_PROXY_TARGET`.
+
+For browser checks, run the panel and API locally, install Playwright without
+changing dependencies (`npm install --no-save --package-lock=false playwright`
+and `npx playwright install chromium`), then run `npm run test:browser`.
+The test expects at least one completed payment with a recoverable payer hash.
+It uses isolated browser contexts and response fixtures for pagination, without
+changing database records. Optional `PUBLIC_TEST_ADMIN_ID` and
+`PUBLIC_TEST_ADMIN_SECRET` enable login/logout checks. Override local URLs with
+`PUBLIC_TEST_BASE_URL` and `PUBLIC_TEST_API_BASE_URL` when needed.

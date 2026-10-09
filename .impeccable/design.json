@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-09T13:21:35Z",
+  "title": "Design System: Payli dashboard",
+  "extensions": {
+    "colorMeta": {
+      "purple": {
+        "role": "primary",
+        "displayName": "Purple"
+      },
+      "cyan": {
+        "role": "secondary",
+        "displayName": "Cyan background glow"
+      },
+      "page-bg": {
+        "role": "neutral",
+        "displayName": "Pale page"
+      },
+      "card-bg": {
+        "role": "neutral",
+        "displayName": "White card"
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-shadow",
+        "value": "0 10px 30px -22px rgba(40, 30, 90, 0.25)",
+        "purpose": "Shared dashboard cards."
+      },
+      {
+        "name": "login-card",
+        "value": "0 30px 80px -40px rgba(40, 30, 90, 0.4)",
+        "purpose": "Login card."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "0.12s ease",
+        "purpose": "Existing navigation, button, field, and copy states."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "760px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Purple login submit action; native browser focus.",
+      "html": "<button class=\"ds-primary\">sign in</button>",
+      "css": ".ds-primary { padding: 13px; border: none; border-radius: 12px; background: var(--purple); color: #fff; font-family: var(--font-body); font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.12s ease; } .ds-primary:hover:not(:disabled) { background: var(--purple-2); } .ds-primary:disabled { opacity: 0.55; cursor: not-allowed; }"
+    },
+    {
+      "name": "Clear button",
+      "kind": "button",
+      "refersTo": "button-clear",
+      "description": "Pale-purple filter reset and retry action; native browser focus.",
+      "html": "<button class=\"ds-clear\">clear</button>",
+      "css": ".ds-clear { padding: 10px 16px; border: none; border-radius: 10px; background: var(--purple-tint); color: var(--purple); font-family: var(--font-body); font-size: 13px; font-weight: 700; cursor: pointer; } .ds-clear:hover { background: #e8e4ff; }"
+    },
+    {
+      "name": "Pagination",
+      "kind": "button",
+      "description": "Bordered page controls with a filled selected page; native browser focus.",
+      "html": "<div class=\"ds-pages\"><button class=\"ds-page ds-current\" aria-current=\"page\">1</button><button class=\"ds-page\">2</button><button class=\"ds-page\" disabled>3</button></div>",
+      "css": ".ds-pages { display: inline-flex; gap: 6px; } .ds-page { min-width: 34px; height: 34px; padding: 0 9px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--input-border); border-radius: 9px; background: #fff; color: #6b6b85; font-family: var(--font-display); font-size: 13.5px; font-weight: 700; font-variant-numeric: tabular-nums; cursor: pointer; transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease; } .ds-page:hover:not(:disabled):not(.ds-current) { border-color: var(--purple-3); color: var(--purple); } .ds-page:disabled { opacity: 0.4; cursor: not-allowed; } .ds-current { background: var(--purple); border-color: var(--purple); color: #fff; cursor: default; }"
+    },
+    {
+      "name": "Login input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Pale field with a purple focus border.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-label\">ADMIN ID</span><input class=\"ds-input\" type=\"text\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-label { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--faint); } .ds-input { width: 100%; padding: 11px 13px; border: 1px solid var(--input-border); border-radius: 11px; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: var(--text); background: var(--input-bg); outline: none; transition: border-color 0.12s ease; } .ds-input:focus, .ds-input:focus-visible { border-color: var(--purple-3); }"
+    },
+    {
+      "name": "Filter field",
+      "kind": "input",
+      "description": "Existing transaction filter control.",
+      "html": "<label class=\"ds-filter\"><span class=\"ds-filter-label\">STATUS</span><select class=\"ds-control\"><option>any</option><option>completed</option><option>pending</option><option>failed</option></select></label>",
+      "css": ".ds-filter { display: flex; flex-direction: column; gap: 6px; } .ds-filter-label { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-3); } .ds-control { width: 100%; padding: 9px 11px; border: 1px solid var(--input-border); border-radius: 10px; font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--text-4); background: var(--input-bg); cursor: pointer; outline: none; transition: border-color 0.12s ease; } .ds-control:focus, .ds-control:focus-visible { border-color: var(--purple-3); }"
+    },
+    {
+      "name": "Active navigation",
+      "kind": "nav",
+      "refersTo": "navigation-active",
+      "description": "Icon and lowercase label; labels hide on mobile. Native browser focus.",
+      "html": "<a class=\"ds-nav ds-active\" href=\"#overview\" aria-label=\"overview\" aria-current=\"page\"><svg class=\"ds-nav-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 4h6v6H4z M14 4h6v6h-6z M14 14h6v6h-6z M4 14h6v6H4z\"/></svg><span class=\"ds-nav-label\">overview</span></a>",
+      "css": ".ds-nav { display: inline-flex; align-items: center; gap: 9px; padding: 9px 14px; border-radius: 11px; color: var(--text-3); font-family: var(--font-body); font-size: 14px; font-weight: 500; text-decoration: none; transition: background 0.12s ease, color 0.12s ease; } .ds-nav:hover { background: rgba(100, 73, 255, 0.06); } .ds-nav-icon { width: 19px; height: 19px; flex: none; color: var(--nav-idle-icon); transition: color 0.12s ease; } .ds-nav.ds-active { background: var(--purple-tint); color: var(--purple); font-weight: 700; } .ds-nav.ds-active .ds-nav-icon { color: var(--purple); } .ds-nav-label { white-space: nowrap; } @media (max-width: 760px) { .ds-nav { padding: 9px 11px; } .ds-nav-label { display: none; } }"
+    },
+    {
+      "name": "Status pills",
+      "kind": "chip",
+      "refersTo": "status-completed",
+      "description": "Static semantic status labels.",
+      "html": "<span class=\"ds-pill ds-completed\">completed</span> <span class=\"ds-pill ds-pending\">pending</span> <span class=\"ds-pill ds-failed\">failed</span>",
+      "css": ".ds-pill { display: inline-flex; align-items: center; padding: 4px 11px; border-radius: 20px; font-family: var(--font-body); font-size: 12.5px; font-weight: 700; line-height: 1.4; white-space: nowrap; text-transform: lowercase; } .ds-completed { background: var(--ok-bg); color: var(--ok-fg); } .ds-pending { background: var(--warn-bg); color: var(--warn-fg); } .ds-failed { background: var(--err-bg); color: var(--err-fg); }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Shared white dashboard surface with default padding and radius.",
+      "html": "<section class=\"ds-card\"><h2 class=\"ds-card-title\">recent transactions</h2></section>",
+      "css": ".ds-card { background: var(--card-bg); color: var(--text); border: 1px solid var(--card-border); box-shadow: var(--card-shadow); padding: 22px; border-radius: 20px; } .ds-card-title { margin: 0; font-family: var(--font-display); font-size: 16px; font-weight: 800; }"
+    },
+    {
+      "name": "Public transaction trace",
+      "kind": "custom",
+      "description": "Native expandable payment row with three trace legs.",
+      "html": "<details class=\"ds-payment\" open><summary class=\"ds-summary\"><span class=\"ds-identity\"><span class=\"ds-route\">ethereum → ethereum</span><span class=\"ds-meta\">USDT → ETH</span></span><span class=\"ds-amount\"><strong>$5</strong><span class=\"ds-meta\">$15 gross volume</span></span><span class=\"ds-status\">completed</span><span class=\"ds-expand\">view trace</span></summary><div class=\"ds-trace\"><div class=\"ds-leg\"><h3>payer funding</h3><p>ethereum · USDT</p><span class=\"ds-hash\">transaction hash</span></div><div class=\"ds-leg\"><h3>source execution</h3><p>ethereum</p><span class=\"ds-hash\">transaction hash</span></div><div class=\"ds-leg\"><h3>destination delivery</h3><p>ethereum · ETH</p><span class=\"ds-hash\">transaction hash</span></div></div></details>",
+      "css": ".ds-payment { color: var(--text); font-family: var(--font-body); border-bottom: 1px solid var(--hairline); } .ds-payment:last-child { border-bottom: 0; } .ds-summary { display: grid; grid-template-columns: minmax(0, 1fr) minmax(150px, auto) 100px 78px; align-items: center; gap: 18px; padding: 18px 0; cursor: pointer; list-style: none; } .ds-summary::-webkit-details-marker { display: none; } .ds-summary:focus-visible { outline: 2px solid var(--purple); outline-offset: 4px; border-radius: 8px; } .ds-identity, .ds-amount { display: flex; flex-direction: column; gap: 5px; min-width: 0; } .ds-route { font-weight: 700; font-size: 14px; overflow-wrap: anywhere; } .ds-amount { text-align: right; font-variant-numeric: tabular-nums; } .ds-amount strong { font-family: var(--font-display); font-size: 17px; } .ds-meta { font-size: 12px; color: var(--text-3); } .ds-status { display: inline-flex; padding: 4px 11px; border-radius: 20px; font-size: 12.5px; font-weight: 700; line-height: 1.4; background: var(--ok-bg); color: var(--ok-fg); } .ds-expand { color: var(--purple); font-size: 12px; font-weight: 700; text-align: right; } .ds-payment[open] .ds-expand { color: var(--text-3); } .ds-trace { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 6px 0 24px; } .ds-leg { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; min-width: 0; } .ds-leg h3 { margin: 0; font-family: var(--font-display); font-size: 14px; } .ds-leg p { margin: 0; color: var(--text-3); font-size: 12px; line-height: 1.6; } .ds-hash { font-family: var(--font-mono); font-size: 12px; color: var(--purple); } @media (max-width: 760px) { .ds-summary { grid-template-columns: minmax(0, 1fr) auto; gap: 12px; } .ds-trace { grid-template-columns: 1fr; gap: 22px; padding-top: 10px; } .ds-meta { font-size: 11px; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Existing Payli dashboard",
+    "overview": "Preserve the incumbent light dashboard. Public overview and transaction pages reuse its typography, navigation, cards, filters, and spacing.",
+    "keyCharacteristics": [
+      "Purple actions and selected states on pale surfaces.",
+      "Heavy display figures with compact supporting labels.",
+      "Rounded white cards and subtle shadows."
+    ],
+    "rules": [],
+    "dos": [
+      "Do reuse the shared components and CSS variables before adding local styles.",
+      "Do retain the public text contrast overrides and responsive trace layout.",
+      "Do keep labels readable alongside figures and transaction hashes."
+    ],
+    "donts": [
+      "Don't replace the inherited palette, fonts, navigation, or card treatment when extending these pages.",
+      "Don't introduce another visual system for anonymous views."
+    ]
+  }
+}

@@ -24,7 +24,7 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/donatees', label: 'donatees', Icon: DonateesIcon },
 ];
 
-function TopNav() {
+function TopNav({ publicView }: { publicView: boolean }) {
   const { logout } = useAuth();
   return (
     <nav className={styles.nav}>
@@ -34,22 +34,28 @@ function TopNav() {
           <span className={styles.wordmark}>payli</span>
         </div>
         <ul className={styles.navItems}>
-          {NAV_ITEMS.map(({ to, label, Icon, end }) => (
+          {NAV_ITEMS.filter((item) => !publicView || item.to === '/' || item.to === '/payments').map(({ to, label, Icon, end }) => (
             <li key={to}>
               <NavLink
                 to={to}
                 end={end}
+                aria-label={publicView && to === '/payments' ? 'transactions' : label}
                 className={({ isActive }) =>
                   `${styles.navItem} ${isActive ? styles.active : ''}`
                 }
               >
                 <Icon className={styles.navIcon} />
-                <span className={styles.navLabel}>{label}</span>
+                <span className={styles.navLabel}>{publicView && to === '/payments' ? 'transactions' : label}</span>
               </NavLink>
             </li>
           ))}
         </ul>
-        <button
+        {publicView ? (
+          <NavLink to="/login" className={styles.logout} aria-label="Admin login">
+            <LogoutIcon className={styles.navIcon} />
+            <span className={styles.navLabel}>admin login</span>
+          </NavLink>
+        ) : <button
           type="button"
           className={styles.logout}
           onClick={logout}
@@ -57,20 +63,20 @@ function TopNav() {
         >
           <LogoutIcon className={styles.navIcon} />
           <span className={styles.navLabel}>log out</span>
-        </button>
+        </button>}
       </div>
     </nav>
   );
 }
 
-export function Layout() {
+export function Layout({ publicView = false }: { publicView?: boolean }) {
   return (
-    <div className={styles.app}>
+    <div className={`${styles.app} ${publicView ? styles.public : ''}`}>
       <div className={styles.blobs} aria-hidden="true">
         <span className={styles.blobCyan} />
         <span className={styles.blobPurple} />
       </div>
-      <TopNav />
+      <TopNav publicView={publicView} />
       <main className={styles.content}>
         <Outlet />
       </main>

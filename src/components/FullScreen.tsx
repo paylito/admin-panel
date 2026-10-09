@@ -29,7 +29,7 @@ export function ErrorScreen({
 }: {
   message: string;
   onRetry: () => void;
-  onLogout: () => void;
+  onLogout?: () => void;
 }) {
   return (
     <Shell>
@@ -40,9 +40,9 @@ export function ErrorScreen({
         <button type="button" className={styles.primary} onClick={onRetry}>
           try again
         </button>
-        <button type="button" className={styles.secondary} onClick={onLogout}>
+        {onLogout && <button type="button" className={styles.secondary} onClick={onLogout}>
           log out
-        </button>
+        </button>}
       </div>
     </Shell>
   );

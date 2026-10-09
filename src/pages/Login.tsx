@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../auth/context';
 import styles from './Login.module.css';
 
@@ -74,6 +75,7 @@ export function Login() {
         >
           {busy ? 'signing in…' : 'log in'}
         </button>
+        <Link to="/" className={styles.subtitle}>back to public activity</Link>
       </form>
     </div>
   );

@@ -20,6 +20,12 @@
   margin-left: auto;
 }
 
+.pageGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .btn {
   min-width: 34px;
   height: 34px;

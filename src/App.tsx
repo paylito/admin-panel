@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './auth/AuthContext';
 import { useAuth } from './auth/context';
 import { AppDataProvider } from './data/AppDataContext';
-import { ApiError, loadAll } from './api/client';
+import { ApiError, getPublicOverview, loadAll } from './api/client';
 import { ErrorScreen, FullScreenLoader } from './components/FullScreen';
 import { Layout } from './components/Layout';
 import { Login } from './pages/Login';
@@ -11,7 +11,10 @@ import { Overview } from './pages/Overview';
 import { Payments } from './pages/Payments';
 import { Merchants } from './pages/Merchants';
 import { Donatees } from './pages/Donatees';
-import type { AppData } from './types';
+import { PublicDataProvider } from './data/PublicDataContext';
+import { PublicOverviewPage } from './pages/PublicOverview';
+import { PublicPaymentsPage } from './pages/PublicPayments';
+import type { AppData, PublicOverview } from './types';
 
 function Dashboard() {
   const { token, logout } = useAuth();
@@ -58,24 +61,48 @@ function Dashboard() {
 
   return (
     <AppDataProvider value={data}>
-      <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Overview />} />
             <Route path="/payments" element={<Payments />} />
             <Route path="/merchants" element={<Merchants />} />
             <Route path="/donatees" element={<Donatees />} />
+            <Route path="/login" element={<Navigate to="/" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
-      </BrowserRouter>
     </AppDataProvider>
   );
 }
 
+function PublicDashboard() {
+  const [overview, setOverview] = useState<PublicOverview | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [reload, setReload] = useState(0);
+  useEffect(() => {
+    const controller = new AbortController();
+    setError(null);
+    getPublicOverview(controller.signal).then((data) => {
+      if (!controller.signal.aborted) setOverview(data);
+    }).catch((err: unknown) => {
+      if (!controller.signal.aborted) setError(err instanceof Error ? err.message : 'Could not load public activity');
+    });
+    return () => controller.abort();
+  }, [reload]);
+  if (error) return <ErrorScreen message={error} onRetry={() => setReload((value) => value + 1)} />;
+  if (!overview) return <FullScreenLoader label="loading public activity…" />;
+  return <PublicDataProvider value={overview}><Routes>
+    <Route element={<Layout publicView />}>
+      <Route path="/" element={<PublicOverviewPage />} />
+      <Route path="/payments" element={<PublicPaymentsPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Route>
+  </Routes></PublicDataProvider>;
+}
+
 function Gate() {
   const { token } = useAuth();
-  if (!token) return <Login />;
+  if (!token) return <Routes><Route path="/login" element={<Login />} /><Route path="*" element={<PublicDashboard />} /></Routes>;
   // Remount the loader whenever the token changes (login / re-login).
   return <Dashboard key={token} />;
 }
@@ -83,7 +110,7 @@ function Gate() {
 export default function App() {
   return (
     <AuthProvider>
-      <Gate />
+      <BrowserRouter><Gate /></BrowserRouter>
     </AuthProvider>
   );
 }

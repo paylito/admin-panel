@@ -6,6 +6,8 @@ import type {
   OverviewApi,
   Pagination,
   Payment,
+  PublicOverview,
+  PublicPayment,
 } from '../types';
 
 /**
@@ -41,6 +43,7 @@ interface RequestOptions {
   method?: string;
   body?: unknown;
   token?: string | null;
+  signal?: AbortSignal;
 }
 
 async function request<T>(path: string, opts: RequestOptions = {}): Promise<T> {
@@ -54,6 +57,7 @@ async function request<T>(path: string, opts: RequestOptions = {}): Promise<T> {
       method: opts.method ?? 'GET',
       headers,
       body: opts.body !== undefined ? JSON.stringify(opts.body) : undefined,
+      signal: opts.signal,
     });
   } catch {
     throw new ApiError(0, 'Could not reach the API. Is it running?');
@@ -148,4 +152,23 @@ export async function loadAll(token: string): Promise<AppData> {
     merchants: merchantsRaw.map((m, i) => ({ ...m, avatarBg: avatarColor(i) })),
     donatees: donateesRaw.map((d, i) => ({ ...d, avatarBg: avatarColor(i) })),
   };
+}
+
+export function getPublicOverview(signal?: AbortSignal): Promise<PublicOverview> {
+  return request<Envelope<PublicOverview>>('/public/overview', { signal }).then((r) => r.data);
+}
+
+export interface PublicFilters {
+  asset: string;
+  network: string;
+  date: string;
+  status: string;
+}
+
+export function getPublicPayments(page: number, filters: PublicFilters, signal?: AbortSignal) {
+  const params = new URLSearchParams({ page: String(page + 1), limit: '10' });
+  for (const [key, value] of Object.entries(filters)) {
+    if (value && value !== 'any') params.set(key, value);
+  }
+  return request<Paginated<PublicPayment>>(`/public/payments?${params}`, { signal });
 }

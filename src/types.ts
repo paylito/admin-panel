@@ -109,3 +109,43 @@ export interface AppData {
   merchants: Merchant[];
   donatees: Donatee[];
 }
+
+export interface PublicTransaction {
+  hash: string;
+  chainId: number;
+  explorerUrl: string | null;
+}
+
+export interface PublicPayment {
+  id: string;
+  status: Status;
+  dateISO: string;
+  amountUsd: number;
+  volumeUsd: number;
+  transferLegs: number;
+  source: { network: string; chainId: number; asset: string; amount: string };
+  destination: { network: string; chainId: number | null; asset: string };
+  payerTransactions: PublicTransaction[];
+  payerHashStatus: 'available' | 'unavailable';
+  sourceTransaction: PublicTransaction | null;
+  destinationTransaction: PublicTransaction | null;
+}
+
+export interface PublicOverview {
+  totalVolume: number;
+  paymentVolume: number;
+  totalPayments: number;
+  completedPayments: number;
+  transferLegs: number;
+  totalUsers: number;
+  activeMerchants: number;
+  dailyPayments: number;
+  avgPaymentValue: number;
+  successRate: number;
+  volumeDefinition: string;
+  userDefinition: string;
+  paymentMethods: PaymentMethod[];
+  networks: { network: string; volume: number; payments: number }[];
+  volumeSeries: { date: string; volume: number }[];
+  recentPayments: PublicPayment[];
+}

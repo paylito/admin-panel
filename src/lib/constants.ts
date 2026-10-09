@@ -32,6 +32,7 @@ export const ASSET_OPTIONS = ['any', 'USDT', 'USDC', 'ETH', 'BTC', 'BNB', 'SOL']
 export const NETWORK_OPTIONS = [
   'any',
   'Ethereum',
+  'Base',
   'Arbitrum',
   'Optimism',
   'Polygon',
@@ -48,6 +49,8 @@ export const STATUS_OPTIONS = ['any', 'completed', 'pending', 'failed'];
  */
 export const EXPLORER_TX_URL: Record<string, string> = {
   ethereum: 'https://etherscan.io/tx/',
+  base: 'https://basescan.org/tx/',
+  celo: 'https://celoscan.io/tx/',
   arbitrum: 'https://arbiscan.io/tx/',
   optimism: 'https://optimistic.etherscan.io/tx/',
   polygon: 'https://polygonscan.com/tx/',

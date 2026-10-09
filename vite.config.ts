@@ -19,6 +19,7 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         '/admin': apiTarget,
+        '/public': apiTarget,
         '/config': apiTarget,
         '/health': apiTarget,
       },

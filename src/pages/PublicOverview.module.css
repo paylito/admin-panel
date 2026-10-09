@@ -1,0 +1,9 @@
+.caption, .methodology, .privacy { color: var(--text-3); font-size: 12px; line-height: 1.8; }
+.methodology { max-width: 95ch; }
+.privacy { text-align: center; }
+.empty { color: var(--text-3); font-size: 13px; text-align: center; padding: 28px 0; }
+.volume { background: linear-gradient(135deg, #6449ff, #7552e5); }
+.volumeText { opacity: 1; }
+@media (max-width: 760px) {
+  .tile { flex: 1 1 calc(50% - 8px); min-width: 0; }
+}

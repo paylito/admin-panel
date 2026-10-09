@@ -29,16 +29,19 @@ export function Pagination({ page, total, onPage }: PaginationProps) {
         >
           ‹
         </button>
-        {Array.from({ length: pages }, (_, i) => (
+        {Array.from(new Set([0, ...Array.from({ length: 3 }, (_, i) => page - 1 + i), pages - 1]))
+          .filter((i) => i >= 0 && i < pages).sort((a, b) => a - b).map((i, index, shown) => (
+          <span key={i} className={styles.pageGroup}>
+          {index > 0 && i - shown[index - 1] > 1 && <span aria-hidden="true">…</span>}
           <button
             type="button"
-            key={i}
             className={`${styles.btn} ${i === page ? styles.active : ''}`}
             onClick={() => onPage(i)}
             aria-current={i === page ? 'page' : undefined}
           >
             {i + 1}
           </button>
+          </span>
         ))}
         <button
           type="button"
